@@ -16,9 +16,9 @@ public class MusicSummary {
     private String aiLyricsSummary;
 
     public MusicSummary(Guestbook guestbook) {
-        this.title = title;
-        this.artist = artist;
-        this.aiLyricsSummary = aiLyricsSummary;
+        this.title = guestbook.getTitle();
+        this.artist = getArtist();
+        this.aiLyricsSummary = getAiLyricsSummary();
     }
 
     public MusicSummary(MusicResult musicResult) {

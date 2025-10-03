@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class AddLikeResponse {
+public class LikeResponse {
 
     private Long guestbookId;
     private int likeCount;
 
-    public AddLikeResponse(Guestbook guestbook) {
+    public LikeResponse(Guestbook guestbook) {
         this.guestbookId = guestbook.getId();
         this.likeCount = guestbook.getLikeCount();
     }

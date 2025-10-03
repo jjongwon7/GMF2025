@@ -11,7 +11,7 @@ import com.gmf._5.entity.MusicTrack;
 import com.gmf._5.repository.GuestbookRepository;
 import com.gmf._5.repository.MusicResultRepository;
 import com.gmf._5.repository.MusicTrackRepository;
-import com.gmf._5.vo.AddLikeResponse;
+import com.gmf._5.vo.LikeResponse;
 import com.gmf._5.vo.MusicSummary;
 import com.gmf._5.vo.ReadGuestbookResponse;
 import com.gmf._5.vo.ReadGuestbooksIgnoringDisplayFlagResponse;
@@ -113,14 +113,29 @@ public class GuestbookService {
     }
 
     @Transactional
-    public AddLikeResponse addLike(Long guestbookId) {
+    public LikeResponse addLike(Long guestbookId) {
 
         Guestbook guestbook = guestbookRepository.findById(guestbookId)
             .orElseThrow(() -> new CustomException(CommonCode.NONEXISTENT_GUESTBOOK));
 
-        guestbook.addLikeCount();
+        guestbook.addLike();
 
-        return new AddLikeResponse(guestbook);
+        return new LikeResponse(guestbook);
+    }
+
+    @Transactional
+    public LikeResponse cancelLike(Long guestbookId) {
+
+        Guestbook guestbook = guestbookRepository.findById(guestbookId)
+            .orElseThrow(() -> new CustomException(CommonCode.NONEXISTENT_GUESTBOOK));
+
+        if (guestbook.getLikeCount() <= 0) {
+            throw new CustomException(CommonCode.INVALID_LIKE_COUNT);
+        }
+
+        guestbook.cancelLike();
+
+        return new LikeResponse(guestbook);
     }
 
     @Transactional

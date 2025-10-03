@@ -39,8 +39,12 @@ public class Guestbook extends BaseTimeEntity {
         this.artist = musicSummary.getArtist();
     }
 
-    public void addLikeCount() {
+    public void addLike() {
         this.likeCount++;
+    }
+
+    public void cancelLike() {
+        this.likeCount--;
     }
 
     public void updateDisplayed(boolean displayed) {

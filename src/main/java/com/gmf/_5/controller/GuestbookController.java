@@ -61,12 +61,23 @@ public class GuestbookController {
     }
 
     /**
-     * 방명록페이지 - 좋아요 / 취소
+     * 방명록페이지 - 좋아요
      */
-    @PostMapping("{guestbookId}/likes")
+    @PostMapping("{guestbookId}/likes/add")
     public ResponseEntity<?> addLike(@PathVariable Long guestbookId) {
         return new ResponseEntity<>(
             guestbookService.addLike(guestbookId),
+            HttpStatus.OK
+        );
+    }
+
+    /**
+     * 방명록페이지 - 좋아요 취소
+     */
+    @PostMapping("{guestbookId}/likes/cancel")
+    public ResponseEntity<?> cancelLike(@PathVariable Long guestbookId) {
+        return new ResponseEntity<>(
+            guestbookService.cancelLike(guestbookId),
             HttpStatus.OK
         );
     }

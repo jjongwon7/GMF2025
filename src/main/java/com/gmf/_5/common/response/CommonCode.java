@@ -14,6 +14,7 @@ public enum CommonCode {
 
     // -1000: Guestbook
     NONEXISTENT_GUESTBOOK(400, -1000, "존재하지 않는 방명록 ID입니다."),
+    INVALID_LIKE_COUNT(400, -1001, "좋아요 수는 음수가 될 수 없습니다."),
 
     // -2000: MusicTrack
     NONEXISTENT_MUSIC_TRACK(400, -2000, "존재하지 않는 곡 정보입니다."),

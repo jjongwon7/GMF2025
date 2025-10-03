@@ -22,7 +22,7 @@ public class MusicResult extends BaseTimeEntity {
     private Long id;
 
     private String aiLyricsSummary;   // 가사 AI 요약
-    private int rank;                 // 유사도 높은 순으로 랭킹 책정 (domain: 2, 3)
+    private int rankOrder;                 // 유사도 높은 순으로 랭킹 책정 (domain: 2, 3)
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guestbook_id")
@@ -36,7 +36,7 @@ public class MusicResult extends BaseTimeEntity {
         MusicTrack musicTrack) {
 
         this.aiLyricsSummary = aiLyricsSummary;
-        this.rank = rank;
+        this.rankOrder = rank;
         this.guestbook = guestbook;
         this.musicTrack = musicTrack;
     }

@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MusicResultRepository extends JpaRepository<MusicResult, Long> {
 
     @EntityGraph(attributePaths = "musicTrack")
-    List<MusicResult> findByGuestbookOrderByRankAsc(Guestbook guestbook);
+    List<MusicResult> findByGuestbookOrderByRankOrderAsc(Guestbook guestbook);
 }

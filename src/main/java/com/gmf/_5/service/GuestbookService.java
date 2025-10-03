@@ -136,7 +136,7 @@ public class GuestbookService {
         Guestbook guestbook = guestbookRepository.findById(guestbookId)
             .orElseThrow(() -> new CustomException(CommonCode.NONEXISTENT_GUESTBOOK));
 
-        List<MusicResult> musicResultList = musicResultRepository.findByGuestbookOrderByRankAsc(
+        List<MusicResult> musicResultList = musicResultRepository.findByGuestbookOrderByRankOrderAsc(
             guestbook);
 
         List<MusicSummary> musicSummaryList = new ArrayList<>();

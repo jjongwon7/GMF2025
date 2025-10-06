@@ -1,6 +1,5 @@
 package com.gmf._5.entity;
 
-import com.gmf._5.vo.MusicSummary;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +20,8 @@ public class MusicResult extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String aiLyricsSummary;   // 가사 AI 요약
+    private String aiLyricsSummaryOneLine;   // 가사 AI 요약
+    private String aiLyricsSummaryThreeLines;   // 가사 AI 요약
     private int rankOrder;                 // 유사도 높은 순으로 랭킹 책정 (domain: 2, 3)
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,10 +32,11 @@ public class MusicResult extends BaseTimeEntity {
     @JoinColumn(name = "music_track_id")
     private MusicTrack musicTrack;
 
-    public MusicResult(String aiLyricsSummary, int rank, Guestbook guestbook,
-        MusicTrack musicTrack) {
+    public MusicResult(String aiLyricsSummaryOneLine, String aiLyricsSummaryThreeLines, int rank,
+        Guestbook guestbook, MusicTrack musicTrack) {
 
-        this.aiLyricsSummary = aiLyricsSummary;
+        this.aiLyricsSummaryOneLine = aiLyricsSummaryOneLine;
+        this.aiLyricsSummaryThreeLines = aiLyricsSummaryThreeLines;
         this.rankOrder = rank;
         this.guestbook = guestbook;
         this.musicTrack = musicTrack;

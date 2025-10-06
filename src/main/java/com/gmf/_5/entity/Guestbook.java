@@ -25,7 +25,8 @@ public class Guestbook extends BaseTimeEntity {
     private int likeCount;         // 좋아요 수
 
     // 여기는 유사도가 가장 높은 것들을 보여주기 위함
-    private String aiLyricsSummary;   // 가사 AI 요약
+    private String aiLyricsSummaryOneLine;      // 가사 AI 요약
+    private String aiLyricsSummaryThreeLines;   // 가사 AI 요약
     private String title;           // 제목
     private String artist;          // 가수
 
@@ -34,7 +35,8 @@ public class Guestbook extends BaseTimeEntity {
         this.comment = comment;
         this.isDisplayed = true;
         this.likeCount = 0;
-        this.aiLyricsSummary = musicSummary.getAiLyricsSummary();
+        this.aiLyricsSummaryOneLine = musicSummary.getAiLyricsSummaryOneLine();
+        this.aiLyricsSummaryThreeLines = musicSummary.getAiLyricsSummaryThreeLines();
         this.title = musicSummary.getTitle();
         this.artist = musicSummary.getArtist();
     }

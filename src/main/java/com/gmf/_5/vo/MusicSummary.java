@@ -13,17 +13,20 @@ public class MusicSummary {
 
     private String title;
     private String artist;
-    private String aiLyricsSummary;
+    private String aiLyricsSummaryOneLine;
+    private String aiLyricsSummaryThreeLines;
 
     public MusicSummary(Guestbook guestbook) {
         this.title = guestbook.getTitle();
         this.artist = guestbook.getArtist();
-        this.aiLyricsSummary = guestbook.getAiLyricsSummary();
+        this.aiLyricsSummaryOneLine = guestbook.getAiLyricsSummaryOneLine();
+        this.aiLyricsSummaryThreeLines = guestbook.getAiLyricsSummaryThreeLines();
     }
 
     public MusicSummary(MusicResult musicResult) {
         this.title = musicResult.getMusicTrack().getTitle();
         this.artist = musicResult.getMusicTrack().getArtist();
-        this.aiLyricsSummary = musicResult.getAiLyricsSummary();
+        this.aiLyricsSummaryOneLine = musicResult.getAiLyricsSummaryOneLine();
+        this.aiLyricsSummaryThreeLines = musicResult.getAiLyricsSummaryThreeLines();
     }
 }

@@ -1,7 +1,5 @@
 package com.gmf._5.controller;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 import com.gmf._5.service.GuestbookService;
 import com.gmf._5.vo.ReadGuestbooksIgnoringDisplayFlagResponse;
 import java.util.Map;

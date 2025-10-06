@@ -13,7 +13,7 @@ import com.gmf._5.repository.MusicResultRepository;
 import com.gmf._5.repository.MusicTrackRepository;
 import com.gmf._5.vo.LikeResponse;
 import com.gmf._5.vo.MusicSummary;
-import com.gmf._5.vo.ReadGuestbookResponse;
+import com.gmf._5.vo.ReadGuestbookForResultShareResponse;
 import com.gmf._5.vo.ReadGuestbooksIgnoringDisplayFlagResponse;
 import com.gmf._5.vo.ReadGuestbooksResponse;
 import java.util.ArrayList;
@@ -65,7 +65,8 @@ public class GuestbookService {
                     new Guestbook(nickname, comment, musicSummary));
             } else {
                 musicResultRepository.save(
-                    new MusicResult(musicSummary.getAiLyricsSummary(), rank, savedGuestbook,
+                    new MusicResult(musicSummary.getAiLyricsSummaryOneLine(),
+                        musicSummary.getAiLyricsSummaryThreeLines(), rank, savedGuestbook,
                         musicTrack));
             }
         }
@@ -147,7 +148,7 @@ public class GuestbookService {
         guestbook.updateDisplayed(displayFlag);
     }
 
-    public ReadGuestbookResponse readGuestbook(Long guestbookId) {
+    public ReadGuestbookForResultShareResponse readGuestbook(Long guestbookId) {
         Guestbook guestbook = guestbookRepository.findById(guestbookId)
             .orElseThrow(() -> new CustomException(CommonCode.NONEXISTENT_GUESTBOOK));
 
@@ -163,6 +164,6 @@ public class GuestbookService {
             }
         }
 
-        return new ReadGuestbookResponse(guestbook, musicSummaryList);
+        return new ReadGuestbookForResultShareResponse(guestbook, musicSummaryList);
     }
 }

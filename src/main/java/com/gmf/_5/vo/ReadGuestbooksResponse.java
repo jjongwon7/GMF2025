@@ -31,7 +31,7 @@ public class ReadGuestbooksResponse {
         // MusicTrack
         private String title;           // 제목
         private String artist;          // 가수
-        private String aiLyricsSummary; // AI 가사 요약
+        private String aiLyricsSummary;
 
 
         public ReadGuestbookResponse(Guestbook guestbook) {
@@ -41,7 +41,7 @@ public class ReadGuestbooksResponse {
             this.likeCount = guestbook.getLikeCount();
             this.title = guestbook.getTitle();
             this.artist = guestbook.getArtist();
-            this.aiLyricsSummary = guestbook.getAiLyricsSummary();
+            this.aiLyricsSummary = guestbook.getAiLyricsSummaryOneLine();
         }
     }
 }

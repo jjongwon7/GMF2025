@@ -1,6 +1,8 @@
 package com.gmf._5.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gmf._5.entity.Guestbook;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Data;
@@ -28,6 +30,9 @@ public class ReadGuestbooksResponse {
         private String comment;         // 코멘트
         private int likeCount;          // 좋아요 수
 
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime createTime;      // 생성일
+
         // MusicTrack
         private String title;           // 제목
         private String artist;          // 가수
@@ -39,6 +44,7 @@ public class ReadGuestbooksResponse {
             this.nickname = guestbook.getNickname();
             this.comment = guestbook.getComment();
             this.likeCount = guestbook.getLikeCount();
+            this.createTime = guestbook.getCreatedDate();
             this.title = guestbook.getTitle();
             this.artist = guestbook.getArtist();
             this.aiLyricsSummary = guestbook.getAiLyricsSummaryOneLine();

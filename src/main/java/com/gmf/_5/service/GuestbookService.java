@@ -77,7 +77,10 @@ public class GuestbookService {
     private MusicTrack readMusicTrack(String title, String artist) {
         return musicTrackRepository.findByTitleAndArtist(title, artist)
             .orElseThrow(
-                () -> new CustomException(CommonCode.NONEXISTENT_MUSIC_TRACK));
+                () -> {
+                    log.error("존재하지 않는 음악 트랙 - title: {}, artist: {}", title, artist);
+                    return new CustomException(CommonCode.NONEXISTENT_MUSIC_TRACK);
+                });
     }
 
     public ReadGuestbooksResponse readGuestbooksResponse(int pageSize, Long lastGuestbookId,

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class MusicTrack extends BaseTimeEntity {
+public class MusicTrack {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -49,7 +49,7 @@ public class GuestbookService {
 
         for (MusicSummary musicSummary : summaryList) {
             map.put(musicSummary,
-                readMusicTrack(musicSummary.getTitle(), musicSummary.getArtist()));
+                readMusicTrack(musicSummary.getTitle(), musicSummary.getArtist(), comment));
         }
 
         Guestbook savedGuestbook = null;
@@ -74,11 +74,11 @@ public class GuestbookService {
         return readGuestbooksResponse(DEFAULT_PAGE_SIZE, null, "latest");
     }
 
-    private MusicTrack readMusicTrack(String title, String artist) {
+    private MusicTrack readMusicTrack(String title, String artist, String comment) {
         return musicTrackRepository.findByTitleAndArtist(title, artist)
             .orElseThrow(
                 () -> {
-                    log.error("존재하지 않는 음악 트랙 - title: {}, artist: {}", title, artist);
+                    log.error("존재하지 않는 음악 트랙 - title: {}, artist: {}, comment: {}", title, artist, comment);
                     return new CustomException(CommonCode.NONEXISTENT_MUSIC_TRACK);
                 });
     }

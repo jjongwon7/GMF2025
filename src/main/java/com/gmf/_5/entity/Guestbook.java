@@ -25,7 +25,9 @@ public class Guestbook extends BaseTimeEntity {
     private int likeCount;         // 좋아요 수
 
     // 여기는 유사도가 가장 높은 것들을 보여주기 위함
+    @Column(length = 300)
     private String aiLyricsSummaryOneLine;      // 가사 AI 요약
+    @Column(length = 300)
     private String aiLyricsSummaryThreeLines;   // 가사 AI 요약
     private String title;           // 제목
     private String artist;          // 가수

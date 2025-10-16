@@ -1,5 +1,6 @@
 package com.gmf._5.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +20,9 @@ public class MusicResult extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 300)
     private String aiLyricsSummaryOneLine;   // 가사 AI 요약
+    @Column(length = 300)
     private String aiLyricsSummaryThreeLines;   // 가사 AI 요약
     private int rankOrder;                 // 유사도 높은 순으로 랭킹 책정 (domain: 2, 3)
 
